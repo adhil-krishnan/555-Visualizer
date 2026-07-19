@@ -1,93 +1,69 @@
-# 🚀 555 Timer IC Visualizer (v4)
+# 555 Timer IC Visualizer (v4)
 
-A standalone, bare-metal hardware instrument built on the **ATmega328P** to make 555 timer behavior visible, measurable, and easy to understand in real time—without bulky lab gear.
+A standalone, bare-metal hardware instrument built on the **ATmega328P** for real-time analysis of 555 timer circuits.
 
----
+## Executive Summary
 
-## 📌 Executive Summary
+The 555 Timer IC Visualizer is designed to close the gap between electronics theory and practical debugging. It provides a compact, self-contained platform to observe waveforms, measure timing behavior, and troubleshoot voltages without relying on bulky external lab instruments.
 
-The **555 Timer IC Visualizer** bridges electronics theory and practical debugging by combining live waveform rendering, timing analytics, logic-state display, and DC voltage probing in one compact platform.
+## System Highlights
 
----
+| Feature | Capability |
+|---|---|
+| Graphics Display | 1.3" SH1106 OLED (128×64) for live waveform plots, RC curves, and metric readouts |
+| Logic Display | CD4511 BCD 7-segment output for instant pin-state visibility |
+| Signal Range | 0.2 Hz to 12 kHz |
+| Live Metrics | Frequency, duty cycle (%), and period (μs/ms/s auto-format) |
+| Voltmeter Probe | Dedicated 0V to 10V DC measurement input |
+| Power Inputs | 3.7V Li-ion + boost, USB Type-C, and 5V screw terminal |
 
-## 💎 Premium Frontend & Interface
+## Real-Time Signal Analytics
 
-### 📺 Dual-Display System
-- **1.3" SH1106 OLED (128×64):** Real-time waveform plots, capacitor charge/discharge curves, and dynamic metrics.
-- **CD4511 BCD 7-Segment Display:** Instant ambient hardware feedback for logic levels and pin states.
+- Oscilloscope-style waveform rendering with **Hold (Freeze)** and **Clear** controls.
+- Adaptive visualization:
+  - high-frequency multi-cycle synthesized waveform for stable viewing
+  - low-frequency rolling sample track for slow-pulse inspection
+- Continuous parameter tracking for frequency, duty cycle, and time period.
 
-### 🎛️ Real-Time Signal Analytics & Graph Engine
-- **Frequency Range:** **0.2 Hz to 12 kHz**
-- **Oscilloscope-style controls:**
-  - **Hold (Freeze):** Capture pulse events for close inspection.
-  - **Clear:** Reset history buffer while frozen.
-- **Adaptive graph behavior:**
-  - High frequency → stabilized multi-cycle synthesized waveform.
-  - Low frequency → live rolling sample track.
-- **Live computed metrics:**
-  - Frequency
-  - Duty cycle (rounded integer %)
-  - Time period (auto-formatted in μs / ms / s)
+## Integrated Voltmeter
 
-### ⚡ Integrated DC Voltmeter Probe
-- Dedicated front-facing probe header for **0V to 10V DC** measurement.
-- Live OLED voltage readout for fast node/power rail troubleshooting.
+A front-facing probe header allows direct DC voltage measurement from **0V to 10V**, with live numeric feedback on the OLED for node-level troubleshooting.
 
----
+## Operating Modes and Menu Architecture
 
-## 🔌 Triple-Input Power Architecture
+Navigation is handled through a 5-button array: **UP, DOWN, SELECT, BACK, HOME**.
 
-1. **3.7V Li-ion battery** + onboard boost to stable **5V logic rail** + dedicated charging module
-2. **USB Type-C input** for modern adapters, laptops, and power banks
-3. **DC 5V screw terminal** for benchtop laboratory power supplies
+### 1) Astable Mode
 
----
+- Theory section for free-running oscillator behavior
+- Live waveform output with freeze/clear support
+- RC charge/discharge graph across **1/3 VCC** and **2/3 VCC** thresholds
+- On-screen equations for *tH, tL, T,* and *f*
+- Breadboard DIY guide and practical applications (e.g., LED flasher, clock source)
 
-## 🛠️ Deep Menu Architecture (5-Button Navigation)
+### 2) Monostable Mode
 
-Buttons: **UP / DOWN / SELECT / BACK / HOME**
+- One-shot pulse generator explanation
+- Trigger-based waveform capture and rolling history
+- RC charging slope visualization linked to potentiometer tuning
+- Timing equation: **T = 1.1 × R × C**
+- Breadboard DIY guide and use cases (timer delays, switch debouncing)
 
-### 🔄 Astable Mode
-- Theory and oscillator behavior overview
-- Live waveform + frequency tracking + freeze/clear controls
-- RC timing graph with real-time potentiometer slope response across **1/3 VCC** and **2/3 VCC** thresholds
-- Timing equations: *tH, tL, T, f*
-- Step-by-step DIY breadboard guide
-- Applications: LED flashers, clock generators
+### 3) Bistable Mode
 
-### ⏱️ Monostable Mode
-- One-shot pulse generator theory
-- Triggered waveform capture + rolling history + hold/clear
-- RC charge slope visualization during pulse generation
-- Equation: **T = 1.1 × R × C**
-- DIY breadboard blueprint
-- Applications: timer delays, switch debouncing
+- Two-state latch behavior explanation
+- Direct SET/RESET logic-state observation
+- Breadboard guide without RC timing components
+- Applications in toggles, control latches, and simple memory behavior
 
-### 🔒 Bistable Mode
-- Two-state latch/flip-flop behavior explanation
-- Direct SET/RESET logic tracking
-- Wiring guide with independent SET and RESET buttons (no RC timing network)
-- Applications: toggles, digital latches, memory cells
+## Design Advantages
 
----
+- **Bare-metal responsiveness:** synchronized graphics, ADC sampling, and timer interrupts with minimal overhead
+- **Lab autonomy:** combines waveform viewing, frequency analysis, and voltage probing in one unit
+- **Interactive learning:** converts abstract timing behavior into measurable, visual feedback
 
-## 🎯 Key Design Advantages
+## Current Status
 
-- **Zero-lag bare-metal performance** for synchronized graphics, ADC voltmeter sampling, and interrupt-driven timing.
-- **Complete lab autonomy** by consolidating key bench functions into one platform.
-- **Interactive learning workflow** that converts invisible circuit behavior into real-time visual metrics.
+The prototype hardware, triple-input power frontend, and firmware optimization are complete and validated.
 
----
-
-## ⏩ Current Status
-
-✅ Prototyping, triple-power integration, and firmware optimization are complete and validated.
-
-### Next Step
-➡️ Transitioning from wire-formed prototype to a compact, professional **2-layer PCB**.
-
----
-
-## 🌟 Why It Matters
-
-The 555 Timer IC Visualizer transforms the classic 555 timer from a black box into a fully observable system—ideal for learners, hobbyists, and engineers who want fast, practical insight into timing circuits.
+**Next milestone:** migration from bench prototype to a compact, professional **2-layer PCB**.
