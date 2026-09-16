@@ -1,3 +1,5 @@
-###⚠️ Documentation in Progress###
-
-This README is currently under active development. Some sections, images, and technical documentation are incomplete and will be updated as the project evolves
+> ## 🚧 Documentation in Progress
+>
+> The hardware is complete and fully functional. This README is currently being expanded with detailed documentation, schematics, images, and technical explanations.
+>
+> **Full documentation will be available soon.**
